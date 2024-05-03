@@ -59,15 +59,12 @@ gg_pizza <- ggplot(mortes_por_municipio, aes(x = "", y = numero_de_mortes, fill 
 
 Os resultados das análises forneceram insights valiosos sobre a distribuição de óbitos no Estado de São Paulo ao longo dos anos. Destacamos que a maioria dos óbitos ocorreu em indivíduos de idade avançada, com uma distribuição semelhante entre os sexos. Quanto à raça/cor, observou-se uma predominância de óbitos entre indivíduos brancos, seguidos por pardos e negros. Além disso, foi identificado um padrão geográfico nas mortes, com os 10 principais municípios concentrando a maioria dos óbitos.
 
-Adicionalmente criamos mais um gráfico de linhas comparando o número de mortes nos anos de 2019, 2020 e 2021 mostrou variações ao longo do tempo. Em particular, foi observado um aumento significativo no número de mortes em 2020, seguido por uma leve diminuição em 2021. Essas tendências podem ser influenciadas por uma série de fatores, incluindo eventos pandêmicos, políticas de saúde e condições socioeconômicas.
+Adicionalmente criei mais um gráfico de linhas comparando o número de mortes nos anos de 2019, 2020 e 2021 mostrou variações ao longo do tempo. Em particular, foi observado um aumento significativo no número de mortes em 2020, seguido por uma leve diminuição em 2021. Essas tendências podem ser influenciadas por uma série de fatores, incluindo eventos pandêmicos, políticas de saúde e condições socioeconômicas.
 
 ![número de mortes nos anos de 2019, 2020 e 2021](Rplot01.png)
 
 
-### Futuras Análises
-Como sugestão para análises futuras, recomenda-se explorar o uso da biblioteca geobr para visualizações em mapas vetoriais, a fim de identificar padrões espaciais na distribuição de óbitos. No entanto, para implementar essa abordagem, seria necessário encontrar uma base de dados que relacione o nome do município com as coordenadas de latitude e longitude correspondentes.
-
 ### Conclusão
 As análises realizadas forneceram insights valiosos sobre a distribuição de óbitos no Estado de São Paulo nos anos de 2019, 2020 e 2021. Através da exploração dos dados demográficos, foi possível identificar padrões e tendências que podem ser fundamentais para direcionar políticas de saúde pública e intervenções preventivas.
 
-Além disso, destacamos o potencial futuro de utilização da biblioteca geobr para análises em mapas vetoriais. Com essa ferramenta, seria possível visualizar a distribuição geográfica dos óbitos e identificar padrões espaciais que podem não ser evidentes em análises tabulares. No entanto, para implementar essa abordagem, seria necessário encontrar uma base de dados que relacione o nome do município com as coordenadas de latitude e longitude correspondentes. Esse é um objetivo que pode ser explorado em trabalhos futuros, a fim de enriquecer ainda mais a compreensão da distribuição geográfica dos óbitos e suas possíveis causas.
+Além disso, destaco o potencial futuro de utilização da biblioteca geobr para análises em mapas vetoriais. Com essa ferramenta, seria possível visualizar a distribuição geográfica dos óbitos e identificar padrões espaciais que podem não ser evidentes em análises tabulares. No entanto, para implementar essa abordagem, seria necessário encontrar uma base de dados que relacione o nome do município com as coordenadas de latitude e longitude correspondentes. Esse é um objetivo que pode ser explorado em trabalhos futuros, a fim de enriquecer ainda mais a compreensão da distribuição geográfica dos óbitos e suas possíveis causas.

@@ -55,7 +55,14 @@ gg_pizza <- ggplot(mortes_por_municipio, aes(x = "", y = numero_de_mortes, fill 
   theme(legend.position = "right")
 ```
 ### Resultados Obtidos
+![Painel reunindo os resultados obtidos](f3b8c301-ce64-46ba-aa16-41f6c90b8c5b.png)
+
 Os resultados das análises forneceram insights valiosos sobre a distribuição de óbitos no Estado de São Paulo ao longo dos anos. Destacamos que a maioria dos óbitos ocorreu em indivíduos de idade avançada, com uma distribuição semelhante entre os sexos. Quanto à raça/cor, observou-se uma predominância de óbitos entre indivíduos brancos, seguidos por pardos e negros. Além disso, foi identificado um padrão geográfico nas mortes, com os 10 principais municípios concentrando a maioria dos óbitos.
+
+Adicionalmente criamos mais um gráfico de linhas comparando o número de mortes nos anos de 2019, 2020 e 2021 mostrou variações ao longo do tempo. Em particular, foi observado um aumento significativo no número de mortes em 2020, seguido por uma leve diminuição em 2021. Essas tendências podem ser influenciadas por uma série de fatores, incluindo eventos pandêmicos, políticas de saúde e condições socioeconômicas.
+
+![número de mortes nos anos de 2019, 2020 e 2021](Rplot01.png)
+
 
 ### Futuras Análises
 Como sugestão para análises futuras, recomenda-se explorar o uso da biblioteca geobr para visualizações em mapas vetoriais, a fim de identificar padrões espaciais na distribuição de óbitos. No entanto, para implementar essa abordagem, seria necessário encontrar uma base de dados que relacione o nome do município com as coordenadas de latitude e longitude correspondentes.

@@ -1,23 +1,23 @@
-# Microdados de Ûbitos do Estado de S„o Paulo - 2019
-# Microdados de Ûbitos - 2019
+# Microdados de √≥bitos do Estado de S√£o Paulo - 2019
+# Microdados de √≥bitos - 2019
 # URL: https://repositorio.seade.gov.br/dataset/30026c29-2237-4ee4-8650-ea3a9657dcd8/resource/b7122d17-cffc-42ea-ae1f-579cc4cf4e21/download/microdados_obitos2019.csv
 
 
-# Carregando a biblioteca necess·ria
+# Carregando a biblioteca necess√°ria
 library(readr)
 library(dplyr)
 library(gridExtra)
 library(ggplot2)
 
-# Baixando e lendo os microdados de Ûbitos
+# Baixando e lendo os microdados de √≥bitos
 download.file('https://repositorio.seade.gov.br/dataset/30026c29-2237-4ee4-8650-ea3a9657dcd8/resource/b7122d17-cffc-42ea-ae1f-579cc4cf4e21/download/microdadosobitos2019.csv',
               'microdadosobitos2019.csv')
 
-# Tabela de cÛdigos dos distritos da capital - SP
+# Tabela de c√≥digos dos distritos da capital - SP
 download.file('https://repositorio.seade.gov.br/dataset/30026c29-2237-4ee4-8650-ea3a9657dcd8/resource/fbcf8362-773d-4cda-90fd-1a216c44f88c/download/tabdist.csv',
               'tabdist.csv')
 
-# Definindo a configuraÁ„o de locale para o encoding padr„o do Windows para sistemas em portuguÍs
+# Definindo a configura√ß√£o de locale para o encoding padr√£o do Windows para sistemas em portugu√™s
 locale <- locale(encoding = "latin1")
 
 # Lendo os arquivos com o encoding correto
@@ -28,84 +28,81 @@ tabdist <- read_csv2('tabdist.csv', col_names = TRUE, locale = locale)
 head(microdadosobitos2019)
 head(tabdist)
 
-# Aqui realiza an·lises especÌficas com base nos dados dos Ûbitos
-# objetivo analisar a distribuiÁ„o de Ûbitos por idade, sexo, localizaÁ„o, etc.
+# Aqui realiza an√°lises espec√≠ficas com base nos dados dos √≥bitos
+# objetivo analisar a distribui√ß√£o de √≥bitos por idade, sexo, localiza√ß√£o, etc.
 
-# Plotando o histograma da distribuiÁ„o de Ûbitos por idade
-# Verificando e corrigindo valores de idade improv·veis
+# Plotando o histograma da distribui√ß√£o de √≥bitos por idade
+# Verificando e corrigindo valores de idade improv√°veis
 idade_maxima <- 100
 
-# Convertendo a coluna de idade para o tipo numÈrico
+# Convertendo a coluna de idade para o tipo num√©rico
 microdadosobitos2019$idadeanos[microdadosobitos2019$idadeanos > idade_maxima] <- NA
 
-# Plotando o histograma da distribuiÁ„o de Ûbitos por idade
+# Plotando o histograma da distribui√ß√£o de √≥bitos por idade
 histograma_idade <- ggplot(data = microdadosobitos2019, aes(x = idadeanos)) +
   geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
-  labs(title = "DistribuiÁ„o de ”bitos por Idade",
+  labs(title = "Distribui√ß√£o de √ìbitos por Idade",
        x = "Idade",
-       y = "N˙mero de ”bitos")
+       y = "N√∫mero de √ìbitos")
 
 # Filtrar os dados para incluir apenas "M" (masculino) e "F" (feminino)
 microdados_sexo_filtrado <- microdadosobitos2019 %>%
   filter(sexo %in% c("M", "F"))
 
-# Criar um gr·fico de barras para distribuiÁ„o de sexo
+# Criar um gr√°fico de barras para distribui√ß√£o de sexo
 grafico_sexo <- ggplot(data = microdadosobitos2019, aes(x = sexo, fill = sexo)) +
   geom_bar() +
   scale_fill_manual(values = c("M" = "blue", "F" = "pink")) +
-  labs(title = "DistribuiÁ„o de ”bitos por Sexo",
+  labs(title = "Distribui√ß√£o de √ìbitos por Sexo",
        x = "Sexo",
-       y = "N˙mero de ”bitos")
+       y = "N√∫mero de √ìbitos")
 
-# Mapear os cÛdigos de raÁa/cor para os rÛtulos correspondentes
+# Mapear os c√≥digos de ra√ßa/cor para os r√≥tulos correspondentes
 microdadosobitos2019$racacor <- factor(microdadosobitos2019$racacor,
                                        levels = c(1, 2, 3, 4),
-                                       labels = c("Branco", "Negro", "Pardo", "IndÌgena"))
+                                       labels = c("Branco", "Negro", "Pardo", "Ind√≠gena"))
 
-# Criar um gr·fico de barras para distribuiÁ„o de raÁa/cor
+# Criar um gr√°fico de barras para distribui√ß√£o de ra√ßa/cor
 grafico_raca_cor <- ggplot(data = microdadosobitos2019, aes(x = racacor)) +
+  scale_fill_viridis(discrete = TRUE) +  # Usando a paleta de cores viridis
   geom_bar(fill = "salmon") +
-  labs(title = "DistribuiÁ„o de ”bitos por RaÁa/Cor",
-       x = "RaÁa/Cor",
-       y = "N˙mero de ”bitos")
+  labs(title = "Distribui√ß√£o de √ìbitos por Ra√ßa/Cor",
+       x = "Ra√ßa/Cor",
+       y = "N√∫mero de √ìbitos")
 
 
-# Este cÛdigo ir· criar um gr·fico de barras mostrando o n˙mero de mortes por municÌpio, com os municÌpios ordenados 
-# pelo n˙mero de mortes. Isso proporciona uma visualizaÁ„o clara da distribuiÁ„o de Ûbitos por municÌpio.
-# Relacionando as tabelas pelo cÛdigo do municÌpio
+# Este c√≥digo ir√° criar um gr√°fico de barras mostrando o n√∫mero de mortes por distrito, com os distritos ordenados 
+# pelo n√∫mero de mortes. Isso proporciona uma visualiza√ß√£o clara da distribui√ß√£o de √≥bitos por distrito
+# Relacionando as tabelas pelo c√≥digo do munic√≠pio
 
-# Agrupando os dados por municÌpio e contando o n˙mero de mortes em cada um
-mortes_por_municipio <- microdadosobitos2019 %>%
-  group_by(codmunres) %>%
+# Agrupando os dados por distrito e contando o n√∫mero de mortes em cada um
+mortes_por_distrito <- microdadosobitos2019 %>%
+  group_by(coddistres) %>%
   summarise(numero_de_mortes = n()) %>%
-  top_n(10, numero_de_mortes)  # Selecionando os 10 maiores municÌpios
+  top_n(10, numero_de_mortes)  # Selecionando os 10 distritos com mais mortes
 
-# Adicionando os nomes dos municÌpios
-mortes_por_municipio <- inner_join(mortes_por_municipio, tabmunpais, by = c("codmunres" = "codmun"))
+# Adicionando os nomes dos distritos
+mortes_por_distrito <- inner_join(mortes_por_distrito, tabdist, by = c("coddistres" = "cod_distrito"))
 
-# Calculando as porcentagens de mortes por municÌpio
-mortes_por_municipio <- mortes_por_municipio %>%
+# Calculando as porcentagens de mortes por distrito
+mortes_por_distrito <- mortes_por_distrito %>%
   mutate(percentual = numero_de_mortes / sum(numero_de_mortes) * 100)
 
-# Excluindo S„o Paulo dos 10 principais municÌpios
-mortes_por_municipio <- mortes_por_municipio %>%
-  filter(nome_municipio != "S„o Paulo")
+# Reordenando os n√≠veis do fator nome_distrito de acordo com o n√∫mero de mortes
+mortes_por_distrito$nome_distrito <- factor(mortes_por_distrito$nome_distrito, 
+                                            levels = mortes_por_distrito$nome_distrito[order(-mortes_por_distrito$numero_de_mortes)])
 
-# Reordenando os nÌveis do fator nome_municipio de acordo com o n˙mero de mortes
-mortes_por_municipio$nome_municipio <- factor(mortes_por_municipio$nome_municipio, 
-                                              levels = mortes_por_municipio$nome_municipio[order(-mortes_por_municipio$numero_de_mortes)])
-
-# Criando o gr·fico de pizza
-gg_pizza <- ggplot(mortes_por_municipio, aes(x = "", y = numero_de_mortes, fill = nome_municipio)) +
+# Criando o gr√°fico de pizza com a paleta de cores viridis
+gg_pizza <- ggplot(mortes_por_distrito, aes(x = "", y = numero_de_mortes, fill = nome_distrito)) +
   geom_bar(stat = "identity", width = 1) +
   geom_text(aes(label = paste0(round(percentual, 1), "%")), position = position_stack(vjust = 0.5)) +
   coord_polar("y", start = 0) +
-  labs(title = "N˙mero de Mortes nos 10 Principais MunicÌpios (excluindo S„o Paulo 61.8%)",
-       fill = "MunicÌpio") +
+  labs(title = "N√∫mero de Mortes nos 10 Principais Distritos",
+       fill = "Distrito") +
   theme_void() +
   theme(legend.position = "right")
 
-# Criando o painel com os gr·ficos
+# Criando o painel com os gr√°ficos
 painel <- grid.arrange(histograma_idade, grafico_sexo, grafico_raca_cor, gg_pizza, ncol = 2)
 
 # Exibir o painel

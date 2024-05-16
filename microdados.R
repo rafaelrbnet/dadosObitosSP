@@ -104,3 +104,25 @@ painel <- grid.arrange(histograma_idade, grafico_sexo, grafico_raca_cor, gg_pizz
 # Exibir o painel
 print(painel)
 
+# Filtrando os dados para o distrito de Sapopemba
+mortes_sapopemba <- microdadosobitos2019 %>%
+  filter(coddistres == 76)
+
+# Criando um gráfico de barras para o número de mortes por raça/cor em Sapopemba
+grafico_raca_cor_sapopemba <- ggplot(data = mortes_sapopemba, aes(x = racacor)) +
+  scale_fill_viridis(discrete = TRUE) +  # Usando a paleta de cores viridis
+  geom_bar(fill = "salmon") +
+  labs(title = "Distribuição de Óbitos por Raça/Cor em Sapopemba",
+       x = "Raça/Cor",
+       y = "Número de Óbitos")
+
+# Plotando o histograma da distribuição de óbitos por idade em Sapopemba
+histograma_idade_sapopemba <- ggplot(data = mortes_sapopemba, aes(x = idadeanos)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(title = "Distribuição de Óbitos por Idade em Sapopemba",
+       x = "Idade",
+       y = "Número de Óbitos")
+
+# Exibindo os gráficos
+grid.arrange(grafico_raca_cor_sapopemba, histograma_idade_sapopemba, ncol = 2)
+

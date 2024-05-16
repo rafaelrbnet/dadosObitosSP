@@ -42,26 +42,26 @@ grafico_raca_cor <- ggplot(data = microdadosobitos2019, aes(x = racacor)) +
        y = "Número de Óbitos")
 ```
 
-### Número de Mortes nos 10 Principais Municípios
+### Número de Mortes nos 10 Principais Distritos
 ```R
 # Código fonte para o gráfico de pizza do número de mortes nos 10 principais municípios
-gg_pizza <- ggplot(mortes_por_municipio, aes(x = "", y = numero_de_mortes, fill = nome_municipio)) +
+gg_pizza <- ggplot(mortes_por_distrito, aes(x = "", y = numero_de_mortes, fill = nome_distrito)) +
   geom_bar(stat = "identity", width = 1) +
   geom_text(aes(label = paste0(round(percentual, 1), "%")), position = position_stack(vjust = 0.5)) +
   coord_polar("y", start = 0) +
-  labs(title = "Número de Mortes nos 10 Principais Municípios (excluindo São Paulo 61.8%)",
-       fill = "Município") +
+  labs(title = "Número de Mortes nos 10 Principais Distritos",
+       fill = "Distrito") +
   theme_void() +
   theme(legend.position = "right")
 ```
 ### Resultados Obtidos
-![Painel reunindo os resultados obtidos](f3b8c301-ce64-46ba-aa16-41f6c90b8c5b.png)
+![Painel reunindo os resultados obtidos](dash.png)
 
 Os resultados das análises forneceram insights valiosos sobre a distribuição de óbitos no Estado de São Paulo ao longo dos anos. Destacamos que a maioria dos óbitos ocorreu em indivíduos de idade avançada, com uma distribuição semelhante entre os sexos. Quanto à raça/cor, observou-se uma predominância de óbitos entre indivíduos brancos, seguidos por pardos e negros. Além disso, foi identificado um padrão geográfico nas mortes, com os 10 principais municípios concentrando a maioria dos óbitos.
 
-Adicionalmente criei mais um gráfico de linhas comparando o número de mortes nos anos de 2019, 2020 e 2021 mostrou variações ao longo do tempo. Em particular, foi observado um aumento significativo no número de mortes em 2020, seguido por uma leve diminuição em 2021. Essas tendências podem ser influenciadas por uma série de fatores, incluindo eventos pandêmicos, políticas de saúde e condições socioeconômicas.
+Adicionalmente criei mais um gráfico de linhas comparando o número de mortes nos anos de 2019, 2020 e 2021 mostrou variações ao longo do tempo. Em particular, foi observado um aumento significativo no número de mortes em 2020, seguido novo aumento  em 2021. Essas tendências podem ser influenciadas por uma série de fatores, incluindo eventos pandêmicos, políticas de saúde e condições socioeconômicas.
 
-![número de mortes nos anos de 2019, 2020 e 2021](Rplot01.png)
+![número de mortes nos anos de 2019, 2020 e 2021](mortes_ano.png)
 
 
 ### Conclusão

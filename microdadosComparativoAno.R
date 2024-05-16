@@ -16,6 +16,9 @@ ler_dados_obitos <- function(ano) {
   read_csv2(filename, col_names = TRUE)
 }
 
+# Definindo a configuração de locale para o encoding padrão do Windows para sistemas em português
+locale <- locale(encoding = "latin1")
+
 # Lendo os dados de óbitos de 2019
 dados_2019 <- ler_dados_obitos("2019")
 # Lendo os dados de óbitos de 2020

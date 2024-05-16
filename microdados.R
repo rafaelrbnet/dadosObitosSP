@@ -24,10 +24,6 @@ locale <- locale(encoding = "latin1")
 microdadosobitos2019 <- read_csv2('microdadosobitos2019.csv', col_names = TRUE, locale = locale)
 tabdist <- read_csv2('tabdist.csv', col_names = TRUE, locale = locale)
 
-# Verificando os nomes das colunas e visualizando os primeiros registros
-head(microdadosobitos2019)
-head(tabdist)
-
 # Aqui realiza análises específicas com base nos dados dos óbitos
 # objetivo analisar a distribuição de óbitos por idade, sexo, localização, etc.
 
